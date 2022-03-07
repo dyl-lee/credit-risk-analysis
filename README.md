@@ -93,7 +93,7 @@ Dataset was read in as a DataFrame and preprocessed:
   * Recall Score: 0.94
   * F1 Score: 0.97
 
-#### Table 1: Summary of Classification Metrics for High Risk Loan Status per Resampling Algorithm
+#### Table 1: Summary of Classification Metrics for High Risk Loan Status
 | | Balanced Accuracy Score | Precision Score | Recall Score | F1 Score |
 | --- | --- | --- | --- | ---|
 | Random OverSampler | 0.65 | 0.01 | 0.71 | 0.02 |
@@ -107,12 +107,13 @@ Dataset was read in as a DataFrame and preprocessed:
 To give context to the confusion matrices, the following labels can be used:
 | | Predicted High Risk | Predicted Low Risk |
 | --- | --- | --- |
-| **Actual High Risk** | TN | FP |
-| **Actual Low Risk** | FN | TP |
+| **Actual High Risk** | TP | FN |
+| **Actual Low Risk** | FP | TN |
 
-Where the model classifies with varying success:
-* True Negative (TN): Number of high-risk candidates correctly labeled as high-risk
-* False Positive (FP): Number of high-risk candidates mislabeled as low-risk
-* False Negative (FN): Number of low-risk candidates mislabeled as high-risk
-* True Positive (TP): Number of low-risk candidates correctly labeled as low-risk
-The definition of credit risk is the possibility of a borrower failing to repay, or defaulting, a loan. In the context of detecting credit risk, FP is of greater concern (undesirable classification that should be minimized as these candidates would be more likely to default) than FN. Hence, the precision scores for the detection of high-risk cases should be considered when assessing the model's performance to correctly identify high-risk candidates.
+Where:
+* True Positive (TP): Number of high-risk candidates correctly labeled as high-risk
+* False Negative (FN): Number of high-risk candidates mislabeled as low-risk
+* False Positive (FP): Number of low-risk candidates mislabeled as high-risk
+* True Negative (TN): Number of low-risk candidates correctly labeled as low-risk 
+
+The credit risk dataset naturally lends to imbalanced classes, there are considerably more low-risk loans than high-risk. Here, the attempts to address this imbalance were resampling (oversampling, undersampling, combination) and ensemble learning to yield a model that could reliably predict credit risk. The definition of credit risk here is defined as the possibility of a borrower failing to repay, or defaulting, a loan. In the context of detecting credit risk, we can think of the FN as the group that is more likely to default than FP (although committing this error can still be costly as missed opportunities for good business). Hence, the recall scores for the detection of high-risk cases should be considered when assessing the model's performance to correctly identify high-risk candidates.
