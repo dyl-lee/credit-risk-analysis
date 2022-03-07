@@ -109,6 +109,7 @@ To give context to the confusion matrices, the following labels can be used:
 | --- | --- | --- |
 | **Actual High Risk** | TN | FP |
 | **Actual Low Risk** | FN | TP |
+
 Where the model classifies with varying success:
 * True Negative (TN): Number of high-risk candidates correctly labeled as high-risk
 * False Positive (FP): Number of high-risk candidates mislabeled as low-risk
